@@ -182,8 +182,8 @@ hint(square, [], Col, FB) =>
 % Buggy-Rule: Add probabilities instead of subtracting them. 
 % Appeared 3-8 times in the 2018 exams.
 buggy(chisq, stage(2), From, To, [step(buggy, zadd, [P_VR, P_Box])]) :-
-    From = zstat(P_VR, P_Box, P_Pool, N_VR, N_Box),
-    To = dfrac(instead(zadd, P_VR + P_Box, P_VR - P_Box), sqrt(P_Pool * (1 - P_Pool) * (frac(1, N_VR) + frac(1, N_Box)))).
+    From = P_VR - P_Box,
+    To = instead(zadd, P_VR + P_Box, P_VR - P_Box).
 
 feedback(zadd, [P_VR, P_Box], Col, FB) =>
     FB = [ "The results matches the ", \mmlm(Col, hyph(z, "statistic")), " where ",

@@ -175,8 +175,8 @@ hint(abs_tratio, [D, Mu, S_D, N], Col, F)
 % This misconception is even built into SPSS, because the paired samples t-test
 % in SPSS only allows for mu = 0.  
 buggy(tratio, stage(2), X, Y, [step(buggy, mu, [Mu])]) :-
-    X = paired(D, Mu, S_D, N),
-    Y = tstat(dfrac(omit_right(mu, D - Mu), S_D / sqrt(N))).
+    X = D - Mu,
+    Y = omit_right(mu, D - Mu).
 
 feedback(mu, [Mu], Col, F)
  => F = [ "The result matches the ", \mmlm(hyph(t, "ratio,")), " when the null",
@@ -555,8 +555,7 @@ hint(tquant, [_N, Alpha], Col, H)
 % Buggy-Rule: Use t-statistic instead of t-quantile
 buggy(cipaired, stage(2), X, Y, [step(buggy, tstat, [D, S_D, N, Mu, Alpha])]) :-
     X = quant(D, Mu, S_D, N, Alpha),
-    P = denote(t, dfrac(D - Mu, S_D / sqrt(N)), ["the observed", space, t, "-statistic."]),
-    Y = P. 
+    Y = denote(t, dfrac(D - Mu, S_D / sqrt(N)), ["the observed", space, t, "-statistic."]). 
 
 feedback(tstat, [_D, _S_D, _N, _Mu, _Alpha], Col, F)
  => F = [ "The result matches the confidence interval based on the observed ",
