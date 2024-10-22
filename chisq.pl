@@ -226,8 +226,7 @@ hint(zadd, [P_VR, P_Box], Col, FB) =>
 buggy(chisq, stage(2), From, To, [step(buggy, school1, [N_VR, N_Box])]) :-
     dif(N_VR, N_Box),
     From = frac(1, N_VR) + frac(1, N_Box),
-    To = instead(school1, color(school1, frac(1, N_VR + N_Box)),
-           1 / N_VR + 1 / N_Box, frac(1, N_VR) + frac(1, N_Box)).
+    To = instead(school1, frac(1, N_VR + N_Box), frac(1, N_VR) + frac(1, N_Box)).
 
 feedback(school1, [A, B], Col, F)
 => F = [" Please keep in mind that ", 
