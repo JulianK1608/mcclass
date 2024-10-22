@@ -203,24 +203,24 @@ hint(zadd, [P_VR, P_Box], Col, FB) =>
 
 % Buggy-Rule_ Forgot parentheses around (1/N_VR + 1/N_Box). 
 % Appeared 3-7 times in the 2018 exams.
-buggy(chisq, stage(2), From, To, [step(buggy, paren2, [N_VR, N_Box])]) :-
-    From = A * B * (1 / N_VR + 1 / N_Box),
-    To = A * B * color(paren2, 1) / color(paren2, N_VR) + color(paren2, 1) / color(paren2, N_Box).
-
-feedback(paren2, [N_VR, N_Box], Col, FB) =>
-    FB = [ "The results matches the ", \mmlm(Col, hyph(z, "statistic")), " without ",
-	   "the parenthesis around ", 
-	   \mmlm(Col, color(paren2, paren(color("#000000", frac(1, N_VR) + frac(1, N_Box))))),
-	   ". Please do not forget the paranthesis around ",
-	   \mmlm(Col, color(paren2, paren(color("#000000", frac(1, N_VR) + frac(1, N_Box))))),
-           "." 
-         ].
-
-hint(paren2, [N_VR, N_Box], Col, FB) =>
-    FB = [ "Do not forget to add parentheses around ", 
-           \mmlm(Col, color(paren2,
-             paren(color("#000000", frac(1, N_VR) + frac(1, N_Box)))))
-         ].
+%buggy(chisq, stage(2), From, To, [step(buggy, paren2, [N_VR, N_Box])]) :-
+%    From = A * B * (1 / N_VR + 1 / N_Box),
+%    To = A * B * color(paren2, 1) / color(paren2, N_VR) + color(paren2, 1) / color(paren2, N_Box).
+%
+%feedback(paren2, [N_VR, N_Box], Col, FB) =>
+%    FB = [ "The results matches the ", \mmlm(Col, hyph(z, "statistic")), " without ",
+%	   "the parenthesis around ", 
+%	   \mmlm(Col, color(paren2, paren(color("#000000", frac(1, N_VR) + frac(1, N_Box))))),
+%	   ". Please do not forget the paranthesis around ",
+%	   \mmlm(Col, color(paren2, paren(color("#000000", frac(1, N_VR) + frac(1, N_Box))))),
+%           "." 
+%         ].
+%
+%hint(paren2, [N_VR, N_Box], Col, FB) =>
+%    FB = [ "Do not forget to add parentheses around ", 
+%           \mmlm(Col, color(paren2,
+%             paren(color("#000000", frac(1, N_VR) + frac(1, N_Box)))))
+%         ].
 
 % Buggy-Rule: Forgot school math
 buggy(chisq, stage(2), From, To, [step(buggy, school1, [N_VR, N_Box])]) :-
